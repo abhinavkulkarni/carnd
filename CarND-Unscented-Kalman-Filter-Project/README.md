@@ -83,7 +83,7 @@ RMSE for x, y, vx, vy is lower than the corresponding upper bounds of [.09, .10,
 
 Also, the NIS values for both the sensors seem to be within 95% bound for the corresponding chi squared distribution with appropriate degrees of freedom (3 for the radar and 2 for the laser).
 
-Radar NIS.                 |  Laser NIS
+Radar NIS                  |  Laser NIS
 :-------------------------:|:-------------------------:
 ![](pics/radar_nis.png)    |  ![](pics/laser_nis.png)
 
