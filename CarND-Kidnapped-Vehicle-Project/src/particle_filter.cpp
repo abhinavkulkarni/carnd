@@ -65,11 +65,11 @@ void ParticleFilter::prediction(double delta_t, double std_pos[], double velocit
 			particles[i].x += velocity/yaw_rate*( sin(theta+yaw_rate*delta_t)-sin(theta));
 			particles[i].y += velocity/yaw_rate*(-cos(theta+yaw_rate*delta_t)+cos(theta));
 			particles[i].theta += yaw_rate*delta_t;
-			particles[i].theta += d(gen)*std_pos[2]*delta_t;
 		}
 
 		particles[i].x += d(gen)*std_pos[0]*delta_t;
 		particles[i].y += d(gen)*std_pos[1]*delta_t;
+		particles[i].theta += d(gen)*std_pos[2]*delta_t;
 	}
 }
 
@@ -160,7 +160,7 @@ void ParticleFilter::updateWeights(double sensor_range, double std_landmark[],
 			double sig_x = std_landmark[0];
 			double sig_y = std_landmark[1];
 
-			double exponent = -(dx*dx)/(sig_x*sig_x) + (dy*dy)/(sig_y*sig_y);
+			double exponent = -(dx*dx)/(2*sig_x*sig_x) - (dy*dy)/(2*sig_y*sig_y);
 			double log_prob = exponent;
 			weight += log_prob;
 		}
