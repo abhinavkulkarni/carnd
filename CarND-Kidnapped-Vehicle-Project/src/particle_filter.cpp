@@ -28,7 +28,7 @@ void ParticleFilter::init(double x, double y, double theta, double std[]) {
 	if (is_initialized)
 		return;
 
-	num_particles = 100;
+	num_particles = 1000;
 	default_random_engine gen;
   	normal_distribution<double> d(0.0, 1.0);
 
@@ -146,7 +146,7 @@ void ParticleFilter::updateWeights(double sensor_range, double std_landmark[],
 
 		dataAssociation(observationsPredicted, observationsTransformed);
 
-		double weight = 1.0;
+		double weight = 0.0;
 		for (int j=0; j<observationsTransformed.size(); j++) {
 			double x = observationsTransformed[j].x;
 			double y = observationsTransformed[j].y;
@@ -160,8 +160,8 @@ void ParticleFilter::updateWeights(double sensor_range, double std_landmark[],
 			double sig_x = std_landmark[0];
 			double sig_y = std_landmark[1];
 
-			double exponent = (dx*dx)/(sig_x*sig_x) + (dy*dy)/(sig_y*sig_y);
-			double log_prob = -exponent;
+			double exponent = -(dx*dx)/(sig_x*sig_x) + (dy*dy)/(sig_y*sig_y);
+			double log_prob = exponent;
 			weight += log_prob;
 		}
 
