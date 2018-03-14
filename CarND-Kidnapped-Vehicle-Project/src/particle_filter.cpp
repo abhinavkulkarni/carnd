@@ -28,7 +28,7 @@ void ParticleFilter::init(double x, double y, double theta, double std[]) {
 	if (is_initialized)
 		return;
 
-	num_particles = 10;
+	num_particles = 100;
 	default_random_engine gen;
   	normal_distribution<double> d(0.0, 1.0);
 
@@ -130,7 +130,7 @@ void ParticleFilter::updateWeights(double sensor_range, double std_landmark[],
 		}
 
 		// Transform car observations into map coordinates (as if they were taken by the current particle)
-		std::vector<LandmarkObs> observationsTransformed;
+		vector<LandmarkObs> observationsTransformed;
 		for (int j=0; j<observations.size(); j++) {
 			double x_car = observations[j].x;
 			double y_car = observations[j].y;
@@ -161,11 +161,15 @@ void ParticleFilter::updateWeights(double sensor_range, double std_landmark[],
 			double sig_y = std_landmark[1];
 
 			double exponent = (dx*dx)/(sig_x*sig_x) + (dy*dy)/(sig_y*sig_y);
-			double denominator = 2*M_PI*sig_x*sig_y;
-			double prob = exp(-exponent)/denominator;
-			weight *= prob;
+			double log_prob = -exponent;
+			weight += log_prob;
 		}
 
+		// No need to calculate denominator since we will be normalizing all the probabilities
+		// double denominator = 2*M_PI*sig_x*sig_y;
+
+		// weight is the sum of log_probs
+		weight = exp(weight);
 		particles[i].weight = weight;
 		weights[i] = weight;
 	}
