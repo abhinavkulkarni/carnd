@@ -10,6 +10,7 @@ public:
   double i_error;
   double d_error;
   double previous_time;
+  double dt;
 
   /*
   * Coefficients

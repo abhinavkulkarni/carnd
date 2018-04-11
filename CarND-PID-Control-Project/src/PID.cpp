@@ -24,15 +24,16 @@ void PID::Init(double Kp, double Ki, double Kd) {
 void PID::UpdateError(double cte) {
 	d_error = cte - p_error;
 	p_error = cte;
-	i_error = 1.0*i_error + cte;
-}
 
-double PID::TotalError() {
-	double current_time = clock();
 	if (previous_time<0)
 		previous_time = 0;
-	double dt = (current_time - previous_time)/CLOCKS_PER_SEC;
+	double current_time = clock();
+	dt = (current_time - previous_time)/CLOCKS_PER_SEC;
 	previous_time = current_time;
+	i_error = i_error + cte*dt;
+}
+
+double PID::TotalError() {	
 	return Kp*p_error + Kd*d_error/dt + Ki*i_error;
 }
 
