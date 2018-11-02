@@ -140,7 +140,7 @@ This is done in `process_image` function in `main.ipynb` notebook. This is the m
 
 Here's a [link to my video result](./project_video_output.mp4)
 
-[![Output video](https://www.youtube.com/watch?v=8ZEDhTgOIWw&feature=youtu.be)](https://www.youtube.com/watch?v=8ZEDhTgOIWw&feature=youtu.be "Output video")
+[![Output video](https://img.youtube.com/vi/8ZEDhTgOIWw/0.jpg)](https://www.youtube.com/watch?v=8ZEDhTgOIWw "Output video")
 
 ---
 
