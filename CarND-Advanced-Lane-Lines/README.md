@@ -142,11 +142,11 @@ Here is the output of pipeline on the [project video](https://www.youtube.com/wa
 
 [![Output video](https://img.youtube.com/vi/8ZEDhTgOIWw/0.jpg)](https://www.youtube.com/watch?v=8ZEDhTgOIWw "Output video")
 
-Here is the output of pipeline on the [challenge video](https://www.youtube.com/vi/Bf9iDc1qJ2M):
+Here is the output of pipeline on the [challenge video](https://www.youtube.com/watch?v=Bf9iDc1qJ2M):
 
-[![Challenge video](https://img.youtube.com/vi/Bf9iDc1qJ2M/0.jpg)](https://www.youtube.com/watch?v=Bf9iDc1qJ2M "Output video")
+[![Challenge video](https://img.youtube.com/vi/Bf9iDc1qJ2M/0.jpg)](https://www.youtube.com/watch?v= _bUIVBDhzPg "Output video")
 
-Below is the output of pipeline on the [harder challenge video](https://www.youtube.com/vi/Bf9iDc1qJ2M). As expected, the simplistic algorithm cannot keep up with the changes in lighting and color intensity:
+Below is the output of pipeline on the [harder challenge video](https://www.youtube.com/watch?v=_bUIVBDhzPg). As expected, the simplistic algorithm cannot keep up with the changes in lighting and color intensity:
 
 [![Challenge video](https://img.youtube.com/vi/_bUIVBDhzPg/0.jpg)](https://www.youtube.com/watch?v=_bUIVBDhzPg "Output video")
 
