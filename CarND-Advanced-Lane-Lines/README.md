@@ -1,6 +1,8 @@
 
-## Writeup
-**Advanced Lane Finding Project**
+# Writeup
+[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
+
+##Advanced Lane Finding Project
 
 The goals / steps of this project are the following:
 
@@ -15,15 +17,18 @@ The goals / steps of this project are the following:
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
-### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
+#### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
----
 
-### Writeup / README
+### Pipeline (video)
 
-#### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  [Here](https://github.com/udacity/CarND-Advanced-Lane-Lines/blob/master/writeup_template.md) is a template writeup for this project you can use as a guide and a starting point.  
+#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-You're reading it!
+| [![Output video](https://img.youtube.com/vi/8ZEDhTgOIWw/0.jpg)](https://www.youtube.com/watch?v=8ZEDhTgOIWw "Output video") | [![Output video](https://img.youtube.com/vi/Bf9iDc1qJ2M/0.jpg)](https://www.youtube.com/watch?v=Bf9iDc1qJ2M "Challenge video") | [![Challenge video](https://img.youtube.com/vi/_bUIVBDhzPg/0.jpg)](https://www.youtube.com/watch?v=_bUIVBDhzPg "Output video") |
+|:--:|:--:|:--:|
+| *Project Video* | *Challenge Video* | *Harder Challenge Video* |
+
+As expected, the simplistic algorithm cannot keep up with the changes in lighting and color intensity. A Deep Learning based image segmentation pipeline will do a much better job at identifying the patch of road.
 
 ### Camera Calibration
 
@@ -39,22 +44,28 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 |:--:| 
 | *Calibration example 1* |
 
-| ![image1](./output_images/calibration2.jpg) | 
+| ![image1](./output_images/calibration5.jpg) | 
 |:--:| 
 | *Calibration example 2* |
 
-| ![image1](./output_images/calibration3.jpg) | 
-|:--:| 
-| *Calibration example 3* |
 
-| ![image1](./output_images/calibration4.jpg) | 
-|:--:| 
-| *Calibration example 4* |
+#### 2. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-| ![image1](./output_images/calibration5.jpg) | 
-|:--:| 
-| *Calibration example 5* |
+The code for my perspective transform includes a function called `warp()`, which appears in lines 115 through 118 in the file `util.py`. The function takes as inputs an image (`img`), as well as a pre-computed perspective transform matrix `M`. I chose the hardcode the source and destination points in the following manner in the notebook `main.ipynb`:
 
+```python
+# Create perspective and inverse persepective transform matrices
+src = np.float32([[230, 702], [557, 477], [726, 477], [1075, 702]])
+dst = np.float32([[230, 702], [230, 0], [1075, 0], [1075, 702]])
+M = cv2.getPerspectiveTransform(src, dst)
+Minv = cv2.getPerspectiveTransform(dst, src)
+```
+
+I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
+
+| ![image4](./output_images/perspective_transform.png) | 
+|:--:| 
+| *Perspective transform* |
 
 ### Pipeline (single images)
 
@@ -85,27 +96,7 @@ I used a combination of color and gradient thresholds to generate a binary image
 |:--:| 
 | *Gradient + white color thresholding* |
 
-#### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
-
-The code for my perspective transform includes a function called `warp()`, which appears in lines 115 through 118 in the file `util.py`. The function takes as inputs an image (`img`), as well as a pre-computed perspective transform matrix `M`. I chose the hardcode the source and destination points in the following manner in the notebook `main.ipynb`:
-
-```python
-# Create perspective and inverse persepective transform matrices
-src = np.float32([[230, 702], [557, 477], [726, 477], [1075, 702]])
-dst = np.float32([[230, 702], [230, 0], [1075, 0], [1075, 702]])
-M = cv2.getPerspectiveTransform(src, dst)
-Minv = cv2.getPerspectiveTransform(dst, src)
-```
-
-I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
-
-| ![image4](./output_images/perspective_transform.png) | 
-|:--:| 
-| *Perspective transform* |
-
-
-
-#### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
+#### 3. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
 Then I implemented sliding window algorithm as described in the tutorials and fit my lane lines with a 2nd order polynomial kinda like this:
 
@@ -120,11 +111,11 @@ The code is contained in the `Lane` class in `util.py` file. I keep track of fit
 
 If following conditions are not met, then lines from previous frame are used.
 
-#### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
+#### 4. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
 Two functions named `find_curvature` and `find_offset` of `Lane` class in `util.py` do this. I pretty much used the code presented in the tutorials.
 
-#### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
+#### 5. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
 This is done in `process_image` function in `main.ipynb` notebook. This is the main function that processes each frame of the video. Again, I pretty much used the code presented in the tutorial to achieve this.
 
@@ -132,27 +123,7 @@ This is done in `process_image` function in `main.ipynb` notebook. This is the m
 |:--:| 
 | *Lane detection* |
 
----
-
-### Pipeline (video)
-
-#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
-
-Here is the output of pipeline on the [project video](https://www.youtube.com/watch?v=8ZEDhTgOIWw):
-
-[![Output video](https://img.youtube.com/vi/8ZEDhTgOIWw/0.jpg)](https://www.youtube.com/watch?v=8ZEDhTgOIWw "Output video")
-
-Here is the output of pipeline on the [challenge video](https://www.youtube.com/watch?v=Bf9iDc1qJ2M):
-
-[![Challenge video](https://img.youtube.com/vi/Bf9iDc1qJ2M/0.jpg)](https://www.youtube.com/watch?v= _bUIVBDhzPg "Output video")
-
-Below is the output of pipeline on the [harder challenge video](https://www.youtube.com/watch?v=_bUIVBDhzPg). As expected, the simplistic algorithm cannot keep up with the changes in lighting and color intensity:
-
-[![Challenge video](https://img.youtube.com/vi/_bUIVBDhzPg/0.jpg)](https://www.youtube.com/watch?v=_bUIVBDhzPg "Output video")
-
----
-
-### Discussion
+## Discussion
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
