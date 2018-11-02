@@ -140,8 +140,7 @@ This is done in `process_image` function in `main.ipynb` notebook. This is the m
 
 Here's a [link to my video result](./project_video_output.mp4)
 
-[![Output video](./project_video_output.mp4)](./project_video_output.mp4 "Output video")
-
+<video src="./project_video_output.mp4" width="320" height="200" controls preload></video>
 
 ---
 
