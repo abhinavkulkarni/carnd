@@ -24,7 +24,7 @@ The goals / steps of this project are the following:
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-| [![Output video](https://img.youtube.com/vi/8ZEDhTgOIWw/0.jpg)](https://www.youtube.com/watch?v=8ZEDhTgOIWw "Output video") | [![Output video](https://img.youtube.com/vi/Bf9iDc1qJ2M/0.jpg)](https://www.youtube.com/watch?v=Bf9iDc1qJ2M "Challenge video") | [![Challenge video](https://img.youtube.com/vi/_bUIVBDhzPg/0.jpg)](https://www.youtube.com/watch?v=_bUIVBDhzPg "Output video") |
+| [![Project video](https://img.youtube.com/vi/8ZEDhTgOIWw/0.jpg)](https://www.youtube.com/watch?v=8ZEDhTgOIWw "Project video") | [![Challenge video](https://img.youtube.com/vi/Bf9iDc1qJ2M/0.jpg)](https://www.youtube.com/watch?v=Bf9iDc1qJ2M "Challenge video") | [![Harder challenge video](https://img.youtube.com/vi/_bUIVBDhzPg/0.jpg)](https://www.youtube.com/watch?v=_bUIVBDhzPg "Harder challenge video") |
 |:--:|:--:|:--:|
 | *Project Video* | *Challenge Video* | *Harder Challenge Video* |
 

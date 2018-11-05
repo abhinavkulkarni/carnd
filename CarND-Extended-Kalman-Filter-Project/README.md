@@ -3,22 +3,20 @@
 
 ## Extended Kalman Filter Project
 
-In this project I have utilized a kalman filter to estimate the state of a moving object of interest with noisy lidar and radar measurements
+The goals of this project are:
+
+1. Design an Extended Kalman Filter algorithm to locate a vehicle in a simulated environment.
+2. The vehicle will run against a test data. The algorithm should handle inputs from multiple sensors, in this case a RADAR and LiDAR.
+3. The algorithm's output will be compared to known ground truth and RMSE value should be below a reasonable, known upper bound.
 
 ## [Project](https://review.udacity.com/#!/rubrics/748/view) Rubrics
+
+In this project I have utilized a kalman filter to estimate the state of a moving object of interest with noisy lidar and radar measurements.
 
 ### Result
 | [![Output video](https://img.youtube.com/vi/K8vDUGGH1_o/0.jpg)](https://www.youtube.com/watch?v=K8vDUGGH1_o "Output video") |
 |:--:|
 | *Project Video* |
-
-### Compiling
-Command `cmake .. && make` from `build` directory works as expected and produces the `ExtendedKF` and `Tests` executables:
-
-```
-term01:build user$ ls
-CMakeCache.txt		CMakeFiles		ExtendedKF		Makefile		Tests			cmake_install.cmake
-```
 
 ### Accuracy
 RMSE for `x`, `y`, `vx`, `vy` is lower than the corresponding upper bounds of `[.11, .11, 0.52, 0.52]`.
@@ -41,11 +39,13 @@ This repository includes two files that can be used to set up and install [uWebS
 
 Once the install for uWebSocketIO is complete, the main program can be built and run by doing the following from the project top directory.
 
+```
 1. mkdir build
 2. cd build
 3. cmake ..
 4. make
 5. ./ExtendedKF
+```
 
 Tips for setting up your environment can be found [here](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/0949fca6-b379-42af-a919-ee50aa304e6a/lessons/f758c44c-5e40-4e01-93b5-1a82aa4e044f/concepts/23d376c7-0195-4276-bdf0-e02f1f3c665d)
 

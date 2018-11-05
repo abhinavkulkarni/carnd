@@ -2,7 +2,11 @@
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
 ### Introduction
-In this project, we label the pixels of a road in images using a Fully Convolutional Network (FCN).
+The goal of this project is:
+
+1. To create a semantic segmentation model to identify pixels belonging to the road in an input image.
+2. Create an encoder-decoder architecture.
+2. Use a pre-trained ImageNet model such as VGG-16, AlexNet to do transfer learning.
 
 ### Result
 
