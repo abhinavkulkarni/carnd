@@ -1,34 +1,21 @@
-# Semantic Segmentation
+# Writeup
+[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
+
 ### Introduction
 In this project, we label the pixels of a road in images using a Fully Convolutional Network (FCN).
 
-### Setup
-##### GPU
-`main.py` will check to make sure you are using GPU - if you don't have a GPU on your system, you can use AWS or another cloud computing platform.
-##### Frameworks and Packages
-Make sure you have the following is installed:
- - [Python 3](https://www.python.org/)
- - [TensorFlow](https://www.tensorflow.org/)
- - [NumPy](http://www.numpy.org/)
- - [SciPy](https://www.scipy.org/)
-##### Dataset
-Download the [Kitti Road dataset](http://www.cvlibs.net/datasets/kitti/eval_road.php) from [here](http://www.cvlibs.net/download.php?file=data_road.zip).  Extract the dataset in the `data` folder.  This will create the folder `data_road` with all the training a test images.
+### Result
 
-### Code
-##### Implementation
-The code in the `main.py` module trains a model based on the data downloaded in the `data` folder and runs the model on the test images.
-##### Run
-Run the following command to run the project:
-```
-python main.py
-```
-**Note** If running this in Jupyter Notebook system messages, such as those regarding test status, may appear in the terminal rather than the notebook.
+The model does reasonably well without any data augmentation or end-to-end training. Following are some of the test images:
+
+![um_000016.png](./runs/1525124229.2074473/um_000016.png)
+![um_000032.png](./runs/1525124229.2074473/um_000032.png)
+![uu_000006.png](./runs/1525124229.2074473/uu_000006.png)
 
 ### Model
 The model is based on FCN-8 architecture described [here](https://arxiv.org/abs/1411.4038).
 The model was replicated by looking at the code provided by the authors on [GitHub](https://github.com/shelhamer/fcn.berkeleyvision.org/blob/master/voc-fcn8s-atonce). The encoder part of the model is based on VGG-16 architecture and is frozen during training. Only decoder layers are trained.
- 
-### Result
+
 ##### Loss
 Training the model on KITTI dataset for 20 epochs took ~10-15min of time on a NVidia Tital X (Pascal) GPU with 12GB of RAM.
 
@@ -56,11 +43,27 @@ Epoch:  17 Loss: 1.3925E-01
 Epoch:  18 Loss: 1.3744E-01
 Epoch:  19 Loss: 1.3470E-01
 ```
-The model does reasonably well without any data augmentation or end-to-end training. Following are some of the test images:
 
-![um_000016.png](./runs/1525124229.2074473/um_000016.png)
-![um_000032.png](./runs/1525124229.2074473/um_000032.png)
-![uu_000006.png](./runs/1525124229.2074473/uu_000006.png)
+### Code
+##### Implementation
+The code in the `main.py` module trains a model based on the data downloaded in the `data` folder and runs the model on the test images.
+##### Run
+Run the following command to run the project:
+```
+python main.py
+```
+
+### Setup
+##### GPU
+`main.py` will check to make sure you are using GPU - if you don't have a GPU on your system, you can use AWS or another cloud computing platform.
+##### Frameworks and Packages
+Make sure you have the following is installed:
+ - [Python 3](https://www.python.org/)
+ - [TensorFlow](https://www.tensorflow.org/)
+ - [NumPy](http://www.numpy.org/)
+ - [SciPy](https://www.scipy.org/)
+##### Dataset
+Download the [Kitti Road dataset](http://www.cvlibs.net/datasets/kitti/eval_road.php) from [here](http://www.cvlibs.net/download.php?file=data_road.zip).  Extract the dataset in the `data` folder.  This will create the folder `data_road` with all the training a test images.
 
 ### Improvements
 1. As is clear from the images above, the model suffers from the "Checkboard Artifact" effect of the transpose convolutional layers as illustrated [here](https://distill.pub/2016/deconv-checkerboard). Some of the solutions explained in the linked publication can be tried to get rid of them.

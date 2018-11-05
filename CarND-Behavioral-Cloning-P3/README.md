@@ -19,11 +19,13 @@ The goals / steps of this project are the following:
 
 <center>
 
-| [![Output video](https://img.youtube.com/vi/UcZlseZxFuQ/0.jpg)](https://www.youtube.com/watch?v=UcZlseZxFuQ "Output video") |
+| [![Output video](https://img.youtube.com/vi/PSUVOkrUgmE/0.jpg)](https://www.youtube.com/watch?v=PSUVOkrUgmE "Output video") |
 |:--:|
 | *Project Video* |
 
 </center>
+
+The dashcam view can be found [here](https://www.youtube.com/watch?v=UcZlseZxFuQ "Output video").
 
 As can be seen, the car sways from side to side and the ride isn't quite smooth. There is no logic of jerk-minimization or any finer grained control embedded in the model.
 
