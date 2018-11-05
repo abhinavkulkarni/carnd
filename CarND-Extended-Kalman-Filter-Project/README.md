@@ -1,7 +1,39 @@
-# Extended Kalman Filter Project
-Self-Driving Car Engineer Nanodegree Program
+# Writeup
+[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
-In this project I have utilized a kalman filter to estimate the state of a moving object of interest with noisy lidar and radar measurements.
+## Extended Kalman Filter Project
+
+In this project I have utilized a kalman filter to estimate the state of a moving object of interest with noisy lidar and radar measurements
+
+## [Project](https://review.udacity.com/#!/rubrics/748/view) Rubrics
+
+### Result
+| [![Output video](https://img.youtube.com/vi/K8vDUGGH1_o/0.jpg)](https://www.youtube.com/watch?v=K8vDUGGH1_o "Output video") |
+|:--:|
+| *Project Video* |
+
+### Compiling
+Command `cmake .. && make` from `build` directory works as expected and produces the `ExtendedKF` and `Tests` executables:
+
+```
+term01:build user$ ls
+CMakeCache.txt		CMakeFiles		ExtendedKF		Makefile		Tests			cmake_install.cmake
+```
+
+### Accuracy
+RMSE for `x`, `y`, `vx`, `vy` is lower than the corresponding upper bounds of `[.11, .11, 0.52, 0.52]`.
+
+![RMSE](pics/rmse.png)
+
+### Correct Algorithm
+Prediction and measurement update logic is clearly outlined in [kalman_filter.cpp](src/kalman_filter.cpp). There are two different update functions - one for Linear Kalman Filter and another for Extended Kalman Filter. Thus the filter can accommodate both laser and radar measurements.
+
+The first measurement, whether it is from laser or radar is used to initialize the filter state variable.
+
+### Code Efficiency
+The code in [kalman_filter.cpp](src/kalman_filter.cpp) computes the residual, both in the linear and non-linear case and then updates the state and uncertainty variables using the residual vector and the Kalman gain matrix.
+
+## Build Instructions
 
 This project involves the Term 2 Simulator which can be downloaded [here](https://github.com/udacity/self-driving-car-sim/releases)
 
@@ -19,24 +51,24 @@ Tips for setting up your environment can be found [here](https://classroom.udaci
 
 Note that the programs that need to be written to accomplish the project are [FusionEKF.cpp](src/FusionEKF.cpp), [FusionEKF.h](src/FusionEKF.h), [kalman_filter.cpp](src/kalman_filter.cpp), [kalman_filter.h](src/kalman_filter.h), [tools.cpp](src/tools.cpp), and [tools.h](src/tools.h)
 
-The program main.cpp has already been filled out.
+The program `main.cpp` has already been filled out.
 
-Here is the main protcol that main.cpp uses for uWebSocketIO in communicating with the simulator.
+Here is the main protcol that `main.cpp` uses for `uWebSocketIO` in communicating with the simulator.
 
 
 INPUT: values provided by the simulator to the c++ program
 
-["sensor_measurement"] => the measurement that the simulator observed (either lidar or radar)
+`["sensor_measurement"]` => the measurement that the simulator observed (either lidar or radar)
 
 
 OUTPUT: values provided by the c++ program to the simulator
 
-["estimate_x"] <= kalman filter estimated position x
-["estimate_y"] <= kalman filter estimated position y
-["rmse_x"]
-["rmse_y"]
-["rmse_vx"]
-["rmse_vy"]
+`["estimate_x"]` <= kalman filter estimated position x
+`["estimate_y"]` <= kalman filter estimated position y
+`["rmse_x"]`
+`["rmse_y"]`
+`["rmse_vx"]`
+`["rmse_vy"]`
 
 ---
 
@@ -61,28 +93,6 @@ OUTPUT: values provided by the c++ program to the simulator
    * On windows, you may need to run: `cmake .. -G "Unix Makefiles" && make`
 4. Run it: `./ExtendedKF `
 
-## Project Rubrics
-
-### Compiling
-Command `cmake .. && make` from `build` directory works as expected and produces the `ExtendedKF` and `Tests` executables:
-
-```
-term01:build user$ ls
-CMakeCache.txt		CMakeFiles		ExtendedKF		Makefile		Tests			cmake_install.cmake
-```
-
-### Accuracy
-RMSE for `x`, `y`, `vx`, `vy` is lower than the corresponding upper bounds of `[.11, .11, 0.52, 0.52]`.
-
-![RMSE](pics/rmse.png)
-
-### Correct Algorithm
-Prediction and measurement update logic is clearly outlined in [kalman_filter.cpp](src/kalman_filter.cpp). There are two different update functions - one for Linear Kalman Filter and another for Extended Kalman Filter. Thus the filter can accommodate both laser and radar measurements.
-
-The first measurement, whether it is from laser or radar is used to initialize the filter state variable.
-
-### Code Efficiency
-The code in [kalman_filter.cpp](src/kalman_filter.cpp) computes the residual, both in the linear and non-linear case and then updates the state and uncertainty variables using the residual vector and the Kalman gain matrix.
 
 
 
