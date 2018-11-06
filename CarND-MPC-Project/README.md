@@ -1,19 +1,22 @@
-# CarND-Controls-MPC
-Self-Driving Car Engineer Nanodegree Program
+# Writeup
+[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
----
+## Model Predictive Control Project
 
-## Project Instructions
+The goals of this project are:
 
-More information is only accessible by people who are already enrolled in Term 2
-of CarND. If you are enrolled, see [the project page](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/f1820894-8322-4bb3-81aa-b26b3c6dcbaf/lessons/b1ff3be0-c904-438e-aad3-2b5379f0e0c3/concepts/1a2255a0-e23c-44cf-8d41-39b8a3c8264a)
-for instructions and the project rubric.
-
+1. To design an MPC (model predictive controller) to control a vehicle in a simulated environment, given the position and velocity information of the vehicle and reference waypoints and velocity to be followed.
+2. Define what parameters constitute the state.
+3. Discuss how values for time horizon was arrived at sampling duration.
+4. Describe how waypoints are followed.
 
 ## Rubrics
 
-### 1. Compilation
-Following the build instructions below will compile the code successfully.
+### 1. Results
+
+| [![Project video](https://img.youtube.com/vi/iq4THfsUjXU/0.jpg)](https://www.youtube.com/watch?v=iq4THfsUjXU "Project video") |
+|:--:|
+| *Project Video* |
 
 ### 2. Implementation
 #### The Model
@@ -21,22 +24,22 @@ MPC model is described in [MPC.cpp](src/MPC.cpp). The model, given the state of 
 
 The cost function is made up of different parts:
 
-1. Sum of squared errors `cte`, `espi` and difference between velocity and reference velocity
-2. Sum of squared actuator inputs (`delta` and `a`)
+1. Sum of squared cross track `cte` and anglular velocity `espi` errors and difference between velocity and reference velocity
+2. Sum of squared actuator inputs (`delta` and `a`) (akin to regularization)
 3. Sum of squared actuator differences from one time step to the next (from `t` to `t+dt`)
 
-The above cost function makes sure that not only primary errors `cte` and `epsi` are minimized, but the vehicle drive is robust and smooth.
+The above cost function makes sure that not only primary errors `cte` and `epsi` are minimized, but the ride is robust and smooth.
 
 The different weightings were found by trail and experimentation.
 
 #### State
-We keep track of vehicles pose `(x, y, psi)`, longitudinal velocity `v` and errors - Cross Track error `cte` and heading angle error `epsi`. We keep track of errors because they are main componenets in the cost function of the optimizer.
+We keep track of vehicles pose `(x, y, psi)`, longitudinal velocity `v` and errors - cross track error `cte` and heading angle error `epsi`. We keep track of errors because they are main componenets in the cost function of the optimizer.
 
 #### Timestep Length and Elapsed Duration (N & dt)
 We chose a small time horizon of `0.5 sec` (`N=10` steps, `dt=0.05` sec). Small value of `dt` helps turn the vehicle on sharp turns (as the vehicle can keep track of sharper turn rate).
 
 #### Polynomial Fitting and MPC Preprocessing
-We convert the waypoints from the global coordinate system to the vehicle's one (makes it easier to calculate Cross Track error) by a sequence of translation and rotation with the resultant x-axis pointing in the direction of vehicle's heading. Vehicle state is modified accordingly.
+We convert the waypoints from the global coordinate system to the vehicle's one (makes it easier to calculate cross track error) by a sequence of translation and rotation with the resultant x-axis pointing in the direction of vehicle's heading. Vehicle state is modified accordingly.
 
 A 3rd degree polynomial is fitted to the waypoints to better track the reference trajectory.
 
@@ -71,10 +74,6 @@ epsi_next = epsi + v/Lf*delta*dt
 
 #### Model Predictive Control with Latency
 There is a latency of `100ms` between the actuator input and actual execution. To combat this, we forward the pose of the model by the latency time duration before passing it on to the solver. 
-
-### 3. Simulation
-The vehicle drive successfully around the track with a reference speed of 40mph.
-
 
 ## Dependencies
 
