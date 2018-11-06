@@ -1,7 +1,7 @@
 # Writeup
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
-### Introduction
+### Semantic Segmentation Project
 The goal of this project is:
 
 1. To create a semantic segmentation model to identify pixels belonging to the road in an input image.
@@ -10,15 +10,19 @@ The goal of this project is:
 
 ### Result
 
-The model does reasonably well without any data augmentation or end-to-end training. Following are some of the test images:
+The FCN-8 model does reasonably well without any data augmentation or end-to-end training. Following are some of the test images:
 
 ![um_000016.png](./runs/1525124229.2074473/um_000016.png)
 ![um_000032.png](./runs/1525124229.2074473/um_000032.png)
 ![uu_000006.png](./runs/1525124229.2074473/uu_000006.png)
 
 ### Model
+##### Architecture
 The model is based on FCN-8 architecture described [here](https://arxiv.org/abs/1411.4038).
 The model was replicated by looking at the code provided by the authors on [GitHub](https://github.com/shelhamer/fcn.berkeleyvision.org/blob/master/voc-fcn8s-atonce). The encoder part of the model is based on VGG-16 architecture and is frozen during training. Only decoder layers are trained.
+
+![um_000016.png](./pictures/FCN-architecture.png)
+[Picture source](https://arxiv.org/abs/1411.4038)
 
 ##### Loss
 Training the model on KITTI dataset for 20 epochs took ~10-15min of time on a NVidia Tital X (Pascal) GPU with 12GB of RAM.

@@ -12,10 +12,8 @@ The goals / steps of this project are the following:
 * Test that the model successfully drives around track one without leaving the road
 * Summarize the results with a written report
 
-## [Rubric](https://review.udacity.com/#!/rubrics/432/view) Points
-#### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.
-
-### Video Result  
+## Result
+### Video Implementation  
 
 <center>
 
@@ -31,14 +29,14 @@ As can be seen, the car sways from side to side and the ride isn't quite smooth.
 
 ### Model Architecture and Training Strategy
 
-#### 1. An appropriate model architecture has been employed
+#### 1. Model architecture
 
 1. The model is losely based on a combination of Nvidia architecture and LenNet
 2. Nvidia architecture uses strided convolutions to reduce the spatial size of the feture maps whereas I used the pooling layers as in LeNet
 3. The size of the fully connected layers in the model is also not as bigger as in the Nvidia architecture as I had limited GPU memory and partly because simulator images have lot less variability than the real world street images that Nvidia model was desinged to handle.
 4. I used early stopping (based on validation loss) to select the best model.
 
-#### 2. Attempts to reduce overfitting in the model
+#### 2. Attempts to reduce overfitting
 
 The model contains dropout layers in order to reduce overfitting (`model.py` lines 88-108). 
 
@@ -61,21 +59,14 @@ For details about how I created the training data, see the next section.
 
 ### Files Submitted & Code Quality
 
-#### 1. Submission includes all required files and can be used to run the simulator in autonomous mode
-
 My project includes the following files:
 
 * `model.py` containing the script to create and train the model
 * `drive.py` for driving the car in autonomous mode
 * `model.h5` containing a trained convolution neural network 
 
-#### 2. Submission includes functional code
-Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing 
+Using the Udacity provided simulator and the `drive.py` file, the car can be driven autonomously around the track by executing 
 ```python drive.py model.h5```
-
-#### 3. Submission code is usable and readable
-
-The model.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.
 
 [//]: # (Image References)
 
@@ -189,6 +180,6 @@ I finally randomly shuffled the data set and put 20% of the data into a validati
 
 I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was determined by the early stopping criterion. I used an adam optimizer so that manually training the learning rate wasn't necessary.
 
-### Discussion
+## Discussion
 1. The car sways from side to side. I used mouse (& keyboard) to control the car (did not an access to a joystick), as a result the car swayed from side to side while collecting data in a training data lap.
 2. The model is too simplistic to be of any use in a real world scenario. End-to-end Deep Learning based control is a pipe-dream at this point and Deel Learning is mostly used in perception part of the pipeline.

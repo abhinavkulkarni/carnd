@@ -15,14 +15,8 @@ The goals / steps of this project are the following:
 * Warp the detected lane boundaries back onto the original image.
 * Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
 
-## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
-
-#### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
-
-
-### Pipeline (video)
-
-#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
+## Results
+### Video Implementation
 
 | [![Project video](https://img.youtube.com/vi/8ZEDhTgOIWw/0.jpg)](https://www.youtube.com/watch?v=8ZEDhTgOIWw "Project video") | [![Challenge video](https://img.youtube.com/vi/Bf9iDc1qJ2M/0.jpg)](https://www.youtube.com/watch?v=Bf9iDc1qJ2M "Challenge video") | [![Harder challenge video](https://img.youtube.com/vi/_bUIVBDhzPg/0.jpg)](https://www.youtube.com/watch?v=_bUIVBDhzPg "Harder challenge video") |
 |:--:|:--:|:--:|
@@ -67,7 +61,7 @@ I verified that my perspective transform was working as expected by drawing the 
 |:--:| 
 | *Perspective transform* |
 
-### Pipeline (single images)
+### Pipeline
 
 #### 1. Provide an example of a distortion-corrected image.
 
@@ -124,9 +118,6 @@ This is done in `process_image` function in `main.ipynb` notebook. This is the m
 | *Lane detection* |
 
 ## Discussion
-
-#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
-
 I foresee (also as can be seen in other two challenge videos):
 
 1. There is a lot of scope left for tinkering and making robust gradient and color based thresholding of the image. Instead of a single rule, it would make sense to have several rules (or features) to identify different colors under different conditions and see which one is applicable in the given case. The shadow of the bridge in the first challenge video and constantly differing lighting conditions in the second, harder challege video completely throw my lane detection off.
