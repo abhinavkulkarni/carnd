@@ -9,10 +9,6 @@ The goals of this project are:
 2. The vehicle will run against a test data. The algorithm should handle inputs from multiple sensors, in this case a RADAR and LiDAR.
 3. The algorithm's output will be compared to known ground truth and RMSE value should be below a reasonable, known upper bound.
 
-## [Project](https://review.udacity.com/#!/rubrics/748/view) Rubrics
-
-In this project I have utilized a kalman filter to estimate the state of a moving object of interest with noisy lidar and radar measurements.
-
 ### Result
 | [![Output video](https://img.youtube.com/vi/K8vDUGGH1_o/0.jpg)](https://www.youtube.com/watch?v=K8vDUGGH1_o "Output video") |
 |:--:|

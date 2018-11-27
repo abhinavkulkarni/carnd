@@ -5,15 +5,11 @@
 
 The goals of this project are:
 
-1. Design an Extended Kalman Filter algorithm to locate a vehicle in a simulated environment.
+1. Design an Unscented Kalman Filter algorithm to locate a vehicle in a simulated environment.
 2. The vehicle will run against a test data. The algorithm should handle inputs from multiple sensors, in this case a RADAR and LiDAR.
 3. The algorithm's output will be compared to known ground truth and RMSE value should be below a reasonable, known upper bound.
 
-## [Project](https://review.udacity.com/#!/projects/284/view) Rubric
-
-In this project we utilize an Unscented Kalman Filter to estimate the state of a moving object of interest with noisy lidar and radar measurements.
-
-### Result
+## Result
 | [![Output video](https://img.youtube.com/vi/s-IUKLa43UI/0.jpg)](https://www.youtube.com/watch?v=s-IUKLa43UI "Output video") |
 |:--:|
 | *Project Video* |
